@@ -1,0 +1,34 @@
+server:
+  port: 8080
+  compression:
+    enabled: true
+    mime-types: application/json,application/octet-stream,audio/wav
+    min-response-size: 1024
+
+spring:
+  mvc:
+    async:
+      request-timeout: 60000
+
+tts:
+  piper:
+    # Piper 可执行文件路径，建议放在 PATH 中，或配置绝对路径
+    binaryPath: piper
+    # 进程超时（毫秒）
+    processTimeoutMs: 60000
+    # 文本最大长度
+    maxTextLength: 5000
+    # 为中文与俄语各自配置模型路径（onnx）
+    zh:
+      modelPath: /models/zh/model.onnx
+      # speakerId: 0
+    ru:
+      modelPath: /models/ru/model.onnx
+      # speakerId: 0
+
+logging:
+  level:
+    root: info
+    com.example.tts: info
+
+
